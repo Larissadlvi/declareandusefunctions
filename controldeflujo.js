@@ -12,14 +12,18 @@ Menor <
 //function businessHours (dayNumber, hourNumber)
 
 
-function businessHours(dayNumber, hourNumber) {
-    if (hourNumber >= 9 && hourNumber <= 18 && dayNumber > 0 && dayNumber < 6) {
-    alert (true);
-    } else {
-    alert (false);
+function businessHours(dayNumber,hourNumber) {
+    //var dayNumber=parseInt(prompt("Ingresa el día con número "))
+    var hourNumber=parseInt(prompt("Ingresa la hora en horario del sistema de reloj de 24 hrs"))
+    
+    if (hourNumber >= 9 && hourNumber <= 18 && dayNumber >= 1 && dayNumber <= 5){
+        window.alert(true);
+    }else  {
+        
+        window.alert(false)
+    }   
     }
-}
-businessHours(6,19); 
+    businessHours();
 
 
 
@@ -37,55 +41,24 @@ Your function should then calculate and return the day of the week corresponding
 
 Hint: use the remainder operator (%), dividing your yearDayNumber by 7. */
 
-var getDayNumber = parseInt(prompt("Dame un día del 0 al 365"));
-var calculator = getDayNumber % 7
-switch (calculator){
-    case 1: 
-        console.log("Lunes")
-        break;
-    case 2:
-        console.log("Martes")
-        break;
-    case 3:
-        console.log("Miercoles")
-        break;
-    case 4:
-        console.log("Jueves")
-        break;
-    case 5:
-        console.log("Viernes")
-        break;
-    case 6:
-        console.log("Sabado")
-        break;
-    case 7:
-        console.log("Domingo")
-        break;
+function getDayNumber(janFirstDayNumber,yearDayNumber){
+    var res = yearDayNumber % 7; 
+    var final = (janFirstDayNumber+res)%7;
+    return final;
 }
 
+//alert("El dia de la semana en el que cayo fue el : " + getDayNumber(parseInt(prompt("Que dia del año fue el 1ro de Enero?(Dom0-6Sab)")),parseInt(prompt("Que dia te gustaría saber?(0-365)"))));
 
 //ACTV IS HERE https://github.com/generation-org/JS/tree/master/JS-03%20-%20Control%20Flow 
+
 
 
 /*Part 3
 Finally, build a function that, from a yearDayNumber (int, 0-365) and an hourNumber (int, 0-23), returns true if it is business hours.
 */
-/*
-function dayOfYear (yearDayNumber, hourNumber) {
-    if (hourNumber >= 9 && hourNumber <= 18 && yearDayNumber > 0 && yearDayNumber < 365) {
-    alert (true);
-    } else {
-    alert (false);
-    }
+function workingHours() {
+    getDayNumber();
+    businessHours();
 }
-dayOfYear(13,30);*/
-
-
-/*function commercialHour () {
-    if (
-    dayNumber = parseInt(prompt("Introduce a day from 0 -6 .Consider 0 is sunday: "));
-    yearDayNumber = parseInt(prompt("Input a day of the year 0-365: "));
-    hourNumber = parseInt(prompt("Introduce an hour, consider 0-23: "));
-    )
-    
-    }*/
+    workingHours();
+    alert("El dia de la semana en el que cayo fue el : " + getDayNumber(parseInt(prompt("Que dia cayo el 1ro de Enero?(0-6)")),parseInt(prompt("Que dia quieres conocer?(0-365)"))));
